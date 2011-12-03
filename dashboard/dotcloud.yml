@@ -1,0 +1,6 @@
+www:
+    type: ruby
+    approot: frontend
+db:
+    type: mysql
+    
