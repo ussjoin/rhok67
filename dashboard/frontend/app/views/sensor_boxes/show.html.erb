@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sensor_box.name %>
+</p>
+
+<p>
+  <b>Serial:</b>
+  <%= @sensor_box.serial %>
+</p>
+
+<p>
+  <b>System:</b>
+  <%= @sensor_box.system %>
+</p>
+
+
+<%= link_to 'Edit', edit_sensor_box_path(@sensor_box) %> |
+<%= link_to 'Back', sensor_boxes_path %>

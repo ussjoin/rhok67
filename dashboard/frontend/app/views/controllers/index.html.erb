@@ -1,0 +1,27 @@
+<h1>Listing controllers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Serial</th>
+    <th>System</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @controllers.each do |controller| %>
+  <tr>
+    <td><%= controller.name %></td>
+    <td><%= controller.serial %></td>
+    <td><%= controller.system %></td>
+    <td><%= link_to 'Show', controller %></td>
+    <td><%= link_to 'Edit', edit_controller_path(controller) %></td>
+    <td><%= link_to 'Destroy', controller, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Controller', new_controller_path %>

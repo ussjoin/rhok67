@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @system.name %>
+</p>
+
+<p>
+  <b>Building:</b>
+  <%= @system.building %>
+</p>
+
+<p>
+  <b>System type:</b>
+  <%= @system.system_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_path(@system) %> |
+<%= link_to 'Back', systems_path %>

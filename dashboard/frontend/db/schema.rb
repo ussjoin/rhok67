@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203223104) do
+ActiveRecord::Schema.define(:version => 20111203231747) do
 
   create_table "buildings", :force => true do |t|
     t.string  "name"
@@ -20,18 +20,7 @@ ActiveRecord::Schema.define(:version => 20111203223104) do
   create_table "companies", :force => true do |t|
     t.string "name"
     t.string "account"
-    t.string "address1"
-    t.string "address2"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
     t.string "phone"
-  end
-
-  create_table "controllers", :force => true do |t|
-    t.string  "name"
-    t.string  "serial"
-    t.integer "system_id"
   end
 
   create_table "facilities", :force => true do |t|
@@ -50,11 +39,15 @@ ActiveRecord::Schema.define(:version => 20111203223104) do
     t.datetime "when"
   end
 
-  add_index "inputs", ["when"], :name => "index_inputs_on_when"
+  create_table "sensor_boxes", :force => true do |t|
+    t.string  "name"
+    t.string  "serial"
+    t.integer "system_id"
+  end
 
   create_table "sensors", :force => true do |t|
     t.string  "name"
-    t.integer "controller_id"
+    t.integer "sensor_box_id"
     t.integer "hardware_type_id"
     t.integer "unit_type_id"
   end

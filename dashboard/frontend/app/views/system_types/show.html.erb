@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @system_type.name %>
+</p>
+
+<p>
+  <b>Icon:</b>
+  <%= @system_type.icon %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_type_path(@system_type) %> |
+<%= link_to 'Back', system_types_path %>

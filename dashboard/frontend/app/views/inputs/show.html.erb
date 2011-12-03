@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sensor:</b>
+  <%= @input.sensor %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @input.value %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%= @input.when %>
+</p>
+
+
+<%= link_to 'Edit', edit_input_path(@input) %> |
+<%= link_to 'Back', inputs_path %>

@@ -1,0 +1,2 @@
+module SensorBoxesHelper
+end

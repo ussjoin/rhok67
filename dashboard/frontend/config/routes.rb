@@ -1,4 +1,25 @@
 Frontend::Application.routes.draw do
+  
+  resources :sensor_boxes
+
+  resources :companies
+  
+  resources :unit_types
+
+  resources :systems
+
+  resources :system_types
+
+  resources :sensors
+
+  resources :hardware_types
+
+  resources :inputs
+
+  resources :buildings
+
+  resources :facilities
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

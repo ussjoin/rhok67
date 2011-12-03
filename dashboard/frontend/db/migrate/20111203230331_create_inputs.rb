@@ -3,8 +3,7 @@ class CreateInputs < ActiveRecord::Migration
     create_table :inputs do |t|
       t.references :sensor
       t.float :value
-      t.timestamp :when
+      t.datetime :when
     end
-    add_index :inputs, :when
   end
 end
