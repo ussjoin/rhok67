@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  controller: 
+  hardware_type: 
+  unit_type: 
+
+two:
+  name: MyString
+  controller: 
+  hardware_type: 
+  unit_type: 
