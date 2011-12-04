@@ -1,5 +1,7 @@
 Frontend::Application.routes.draw do
   
+  resources :dashboard
+  
   resources :sensor_boxes
 
   resources :companies
