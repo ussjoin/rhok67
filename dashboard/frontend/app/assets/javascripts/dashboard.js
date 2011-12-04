@@ -107,7 +107,7 @@ $(function() {
 	
 	var sensorSelectSuccessHandler = function(data){
 		var series = chart.addSeries({
-		    name: "Point",
+		    name: "Value",
 		    data: data
 		});
 	};
@@ -128,24 +128,21 @@ $(function() {
 	
 	chart = new Highcharts.StockChart({
 		chart : {
-			renderTo : 'chart',
-			events : {
-				load : function() {
-				}
-			},
-			type: 'spline'
+			renderTo : 'chart'
 		},
 		xAxis: {
 	         type: 'datetime',
 	         dateTimeLabelFormats: { // don't display the dummy year
 	            month: '%e. %b',
 	            year: '%b'
-	         }
+	         },
+			maxZoom : 14 * 24 * 3600000
 	      },
-		tooltip: {
-	         formatter: function() {
-	              return Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' m';
-	         }
+	      yAxis: {
+	         title: {
+	            text: 'Y Axis'
+	         },
+	         min: 0
 	      },
 		rangeSelector: {
 			buttons: [{
