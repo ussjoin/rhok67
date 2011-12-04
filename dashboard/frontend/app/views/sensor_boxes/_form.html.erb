@@ -20,8 +20,8 @@
     <%= f.text_field :serial %>
   </div>
   <div class="field">
-    <%= f.label :system_id %><br />
-    <%= f.text_field :system_id %>
+    System<br />
+		<%= f.collection_select :system_id, System.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

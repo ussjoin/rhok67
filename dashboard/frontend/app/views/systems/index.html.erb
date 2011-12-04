@@ -13,8 +13,8 @@
 <% @systems.each do |system| %>
   <tr>
     <td><%= system.name %></td>
-    <td><%= system.building %></td>
-    <td><%= system.system_type %></td>
+    <td><%= link_to system.building.name, system.building %></td>
+    <td><%= link_to system.system_type.name, system.system_type %></td>
     <td><%= link_to 'Show', system %></td>
     <td><%= link_to 'Edit', edit_system_path(system) %></td>
     <td><%= link_to 'Destroy', system, :confirm => 'Are you sure?', :method => :delete %></td>

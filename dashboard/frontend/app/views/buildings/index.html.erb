@@ -12,7 +12,7 @@
 <% @buildings.each do |building| %>
   <tr>
     <td><%= building.name %></td>
-    <td><%= building.facility %></td>
+    <td><%= link_to building.facility.name, building.facility %></td>
     <td><%= link_to 'Show', building %></td>
     <td><%= link_to 'Edit', edit_building_path(building) %></td>
     <td><%= link_to 'Destroy', building, :confirm => 'Are you sure?', :method => :delete %></td>

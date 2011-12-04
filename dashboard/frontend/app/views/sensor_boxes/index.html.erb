@@ -14,7 +14,7 @@
   <tr>
     <td><%= sensor_box.name %></td>
     <td><%= sensor_box.serial %></td>
-    <td><%= sensor_box.system %></td>
+    <td><%= link_to sensor_box.system.name, sensor_box.system %></td>
     <td><%= link_to 'Show', sensor_box %></td>
     <td><%= link_to 'Edit', edit_sensor_box_path(sensor_box) %></td>
     <td><%= link_to 'Destroy', sensor_box, :confirm => 'Are you sure?', :method => :delete %></td>
