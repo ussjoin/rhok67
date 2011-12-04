@@ -2,26 +2,36 @@
 	<h2>Analyze water usage</h2>
 </div>
 	<div id="categories">
-		<div class="select_box" id="select_companies_div">
+		<table>
+			<thead>
+			<tr>
+				<th>Companies</th>
+				<th>Facilities</th>
+				<th>Buildings</th>
+				<th>Systems</th>
+				<th>Sensors</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+				<td>
 			<select class="multiselect" size="4" id="select_companies" multiple="multiple">
 			</select>
-		</div>
-		<div class="select_box"  id="select_facilities_div" multiple="multiple">
+			</td><td>
 			<select class="multiselect" size="4" id="select_facilities">
 			</select>
-		</div>
-		<div class="select_box"  id="select_buildings_div" multiple="multiple">
+			</td><td>
 			<select class="multiselect" size="4" id="select_buildings">
 			</select>
-		</div>
-		<div class="select_box"  id="select_systems_div" multiple="multiple">
+			</td><td>
 			<select class="multiselect" size="4" id="select_systems">
 			</select>
-		</div>
-		<div class="select_box"  id="select_sensors_div" multiple="multiple">
+			</td><td>
 			<select class="multiselect" size="4" id="select_sensors">
 			</select>
-		</div>
+			</td>
+			</tr>
+			</table>
 	</div>
 	<div id="chart"></div>
 	<div style="clear:both"></div>

@@ -208,6 +208,17 @@ $(function() {
 	         },
 	         min: 0
 	      },
+		  tooltip: {
+            formatter: function() {
+                var s = '<b>'+ Highcharts.dateFormat('%A, %b %e, %Y %h:%m %t', this.x) +'</b>';
+
+                $.each(this.points, function(i, point) {
+                    s += '<br/><b>'+ this.series.name + "</b>: "+ point.y.toFixed(2) ;
+                });
+            
+                return s;
+            }
+        },
 		rangeSelector: {
 			buttons: [{
 				count: 1,
