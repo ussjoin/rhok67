@@ -5,11 +5,12 @@ Frontend::Application.routes.draw do
   match 'facilities/:id/buildings' => 'facilities#buildings'
   match 'buildings/:id/systems' => 'buildings#systems'
   match 'systems/:id/sensors' => 'systems#sensors'
+  match 'manage' => 'manage#index'
+  match 'about' => 'about#index'
+  match 'help' => 'help#index'
+  match 'dashboard' => 'dashboard#index'
   match 'upload' => 'upload#upload', :as => :upload
   
-  resources :dashboard
-  resources :about
-  resources :help
   resources :sensor_boxes
   resources :companies
   resources :unit_type

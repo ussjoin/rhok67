@@ -107,12 +107,12 @@ $(function() {
 	
 	var sensorSelectSuccessHandler = function(data){
 		chart.addSeries({
-		    name: "Value",
-		    data: data
+		    name: data.name,
+		    data: data.coords
 		});
 		chart.addSeries({
-		    name: "Value",
-		    data: data,
+		    name: data.name,
+		    data: data.coords,
 		   	xAxis:chart.xAxis.length-1,// the last X axis 
 	        yAxis:chart.yAxis.length-1 // the last Y axis
 		});
