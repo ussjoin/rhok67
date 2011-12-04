@@ -1,14 +1,15 @@
 <h1>Listing system_types</h1>
 
-<table>
+<table class="datatable">
+<thead>
   <tr>
     <th>Name</th>
     <th>Icon</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
-
+</thead><tbody>
 <% @system_types.each do |system_type| %>
   <tr>
     <td><%= system_type.name %></td>
@@ -19,7 +20,7 @@
   </tr>
 <% end %>
 </table>
-
+</tbody>
 <br />
 
 <%= link_to 'New System type', new_system_type_path %>

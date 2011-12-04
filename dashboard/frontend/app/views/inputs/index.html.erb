@@ -1,15 +1,17 @@
 <h1>Listing inputs</h1>
 
-<table>
+<table class="datatable">
+<thead>
   <tr>
     <th>Sensor</th>
     <th>Value</th>
     <th>When</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
-
+</thead>
+<tbody>
 <% @inputs.each do |input| %>
   <tr>
     <td><%= input.sensor %></td>
@@ -20,6 +22,7 @@
     <td><%= link_to 'Destroy', input, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

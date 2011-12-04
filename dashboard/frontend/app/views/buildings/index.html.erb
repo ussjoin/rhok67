@@ -1,14 +1,16 @@
 <h1>Listing buildings</h1>
 
-<table>
+<table class="datatable">
+<thead>
   <tr>
     <th>Name</th>
     <th>Facility</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
-
+</thead>
+<tbody>
 <% @buildings.each do |building| %>
   <tr>
     <td><%= building.name %></td>
@@ -18,6 +20,7 @@
     <td><%= link_to 'Destroy', building, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

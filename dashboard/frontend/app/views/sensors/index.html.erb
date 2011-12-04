@@ -1,16 +1,17 @@
 <h1>Listing sensors</h1>
 
-<table>
+<table class="datatable">
+<thead>
   <tr>
     <th>Name</th>
     <th>Sensor Box</th>
     <th>Hardware type</th>
     <th>Unit type</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
-
+</thead><tbody>
 <% @sensors.each do |sensor| %>
   <tr>
     <td><%= sensor.name %></td>
@@ -22,6 +23,7 @@
     <td><%= link_to 'Destroy', sensor, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

@@ -1,14 +1,15 @@
 <h1>Listing hardware_types</h1>
 
-<table>
+<table class="datatable">
+<thead>
   <tr>
     <th>Name</th>
     <th>Icon</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
-
+</thead><tbody>
 <% @hardware_types.each do |hardware_type| %>
   <tr>
     <td><%= hardware_type.name %></td>
@@ -18,6 +19,7 @@
     <td><%= link_to 'Destroy', hardware_type, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

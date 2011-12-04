@@ -1,15 +1,17 @@
 <h1>Listing systems</h1>
 
-<table>
+<table class="datatable">
+<thead>
   <tr>
     <th>Name</th>
     <th>Building</th>
     <th>System type</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
-
+</thead>
+<tbody>
 <% @systems.each do |system| %>
   <tr>
     <td><%= system.name %></td>
@@ -20,6 +22,7 @@
     <td><%= link_to 'Destroy', system, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
