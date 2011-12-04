@@ -125,7 +125,7 @@ $(function() {
 	var sensorSuccessHandler = function(data){
 		var output = [];
 		for(sensor in data){
-			var sensorOption = new Option(data[sensor].name, data[sensor].id);
+			var sensorOption = new Option(data[sensor].name + " ("+data[sensor].unit_type.name+")", data[sensor].id);
 			$('#select_sensors').append(sensorOption).multiselect('refresh').multiselect('enable');
 		}
 	};

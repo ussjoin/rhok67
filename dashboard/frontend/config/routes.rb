@@ -9,6 +9,7 @@ Frontend::Application.routes.draw do
   match 'about' => 'about#index'
   match 'help' => 'help#index'
   match 'dashboard' => 'dashboard#index'
+  match 'dashboard/export' => 'dashboard#export'
   match 'upload' => 'upload#upload', :as => :upload
   
   resources :sensor_boxes
