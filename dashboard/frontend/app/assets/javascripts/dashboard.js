@@ -5,6 +5,33 @@ $(function() {
 		}
 	});
 	
+	$(".multiselect").multiselect().multiselect('disable');
+	
+	$.ajax({
+	  url: "companies",
+	  dataType:"json",
+	  context: document.body,
+	  success: function(data){
+		var output = [];
+		output.push('<option value="ALL">All Companies</option>');
+		for(company in data){
+			output.push('<option value="'+ data[company].id +'">'+ data[company].name +'</option>');
+		}
+		$('#select_companies').html(output.join('')).multiselect('refresh').multiselect('enable');
+		
+	  }
+	});
+	
+	$("#select_companies").multiselect({
+	   optgrouptoggle: function(event, ui){
+		  var values = $.map(ui.inputs, function(checkbox){
+			 return checkbox.value;
+		  }).join(", ");
+		  alert("Checkboxes " + (ui.checked ? "checked" : "unchecked") + ": " + values);
+	   }
+	});
+	
+	
 	window.chart = new Highcharts.StockChart({
 		chart : {
 			renderTo : 'chart',
