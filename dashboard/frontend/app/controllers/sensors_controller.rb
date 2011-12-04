@@ -29,7 +29,7 @@ class SensorsController < ApplicationController
     @inputs = Array.wrap(Input.where("sensor_id in (:ids)", :ids => ids))
 	coords = Array.new
 	for input in @inputs
-		coord = [input.when.to_i, input.value]
+		coord = [input.when.to_i * 1000, input.value]
 		coords.push(coord)
 	end
     respond_to do |format|

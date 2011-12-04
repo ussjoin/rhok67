@@ -106,17 +106,19 @@ $(function() {
 	);
 	
 	var sensorSelectSuccessHandler = function(data){
-		var series = chart.addSeries({});
-		series.setData(data);
+		var series = chart.addSeries({
+		    name: "Point",
+		    data: data
+		});
 	};
 	
 	$("#select_sensors").bind("multiselectclick", function(event, ui){
 		if (ui.checked){
-			var values = $("#select_sensors").val();
+			var values = ui.value;
 			$.ajax({
 			  url: "sensors/inputs.json",
 			  dataType:"json",
-			  data:{"ids":values},
+			  data:{"ids":[values]},
 			  context: document.body,
 			  success: sensorSelectSuccessHandler
 			});
@@ -130,9 +132,21 @@ $(function() {
 			events : {
 				load : function() {
 				}
-			}
+			},
+			type: 'spline'
 		},
-		
+		xAxis: {
+	         type: 'datetime',
+	         dateTimeLabelFormats: { // don't display the dummy year
+	            month: '%e. %b',
+	            year: '%b'
+	         }
+	      },
+		tooltip: {
+	         formatter: function() {
+	              return Highcharts.dateFormat('%e. %b', this.x) +': '+ this.y +' m';
+	         }
+	      },
 		rangeSelector: {
 			buttons: [{
 				count: 1,
@@ -160,6 +174,12 @@ $(function() {
 		
 		exporting: {
 			enabled: true
-		}
+		},
+		
+		series : [{
+		    name : 'Random data',
+		    data: [[(new Date()).getTime(), 0]]
+		}]
+		
 	});	
 });
