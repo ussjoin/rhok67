@@ -6,18 +6,18 @@
 </p>
 
 <p>
-  <b>Controller:</b>
-  <%= @sensor.controller %>
+  <b>Sensor Box:</b>
+  <%= link_to @sensor.sensor_box.name, @sensor.sensor_box %>
 </p>
 
 <p>
   <b>Hardware type:</b>
-  <%= @sensor.hardware_type %>
+  <%= link_to @sensor.hardware_type.name, @sensor.hardware_type %>
 </p>
 
 <p>
   <b>Unit type:</b>
-  <%= @sensor.unit_type %>
+  <%= link_to  @sensor.unit_type.name, @sensor.unit_type %>
 </p>
 
 
