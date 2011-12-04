@@ -3,4 +3,7 @@ class Sensor < ActiveRecord::Base
   belongs_to :sensor_box
   belongs_to :hardware_type
   belongs_to :unit_type
+  def as_json(options={})
+    super(:include =>[:unit_type])
+  end
 end
