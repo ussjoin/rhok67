@@ -33,6 +33,7 @@ class UploadController < ApplicationController
       #Here's a terrible assumption (FIXME): Sensor boxes should increase on every import,
       #Because we have absolutely no idea what they really are.
       sensorbox = SensorBox.new(:name => 'aBox', :serial => 'cereal', :system => system)
+      sensorbox.save
       
       arr_of_arrs[0].delete_at(0)
       arr_of_arrs[1].delete_at(0)

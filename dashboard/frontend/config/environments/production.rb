@@ -1,4 +1,5 @@
 Frontend::Application.configure do
+  ActiveRecord::Base.connection.execute "SET collation_connection = 'utf8_general_ci' "
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
