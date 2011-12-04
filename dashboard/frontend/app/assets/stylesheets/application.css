@@ -5,8 +5,64 @@
  *= require_self
  *= require_tree . 
 */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, 
+menu, nav, section, summary, time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:1em;
+  vertical-align:baseline;
+  background:transparent;
+}  
+
+header, nav, article, footer, address, section {  
+    display: block;  
+}   
+
+html {
+	height: 100%;
+}
+
 body {
-	background-color:#000 !important;
+	font-size: 16px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	height: 100%;
+	background: #000 !important;
+}
+
+p {
+	line-height: 1.35em;
+	margin-bottom: 1em;
+	font-size: 1.2em;
+	color: #666;
+}
+
+h1, h2 {
+	font-size: 2em;
+	font-weight: bold;
+	margin-bottom: .25em;
+	color: #000;
+}
+
+a img {
+	border: 0;
+}
+
+/* ----------------- main --------------*/
+
+#main-content {
+	width: 880px;
+	margin: 0 0 0 10px;
+	padding: 20px 35px;
+	position: relative;
+	background-color: #fff;	
+	min-height: 800px;
+
 }
 
 #container {
@@ -15,32 +71,32 @@ body {
 	margin: 5px auto;
 }
 
-#header {
+header {
 	border-top: 5px solid #002B6B;
      padding-bottom: 7px;
     padding-left: 15px;
     padding-top: 10px;
 }
 
-#nav {
+nav {
 	background-color:#002B6B;
 	width:100%;
 	clear:both;
 	min-height:2.2em;
 }
 
-#nav ul {
+nav ul {
 list-style: none;
 padding: 0;
 margin: 0;
 } 
 
-#nav li {
+nav li {
 float: left;
 margin: 0;
 } 
 
-#nav li a {
+nav li a {
 	height: 2em;
 	line-height: 2em;
 	float: left;
@@ -53,23 +109,27 @@ margin: 0;
 	background-color:#002B6B;
 } 
 
-#nav li a:hover {
+nav li a:visited{
+	color:#FFF;
+}
+
+nav li a:hover {
 	color: #002B6B;
 	background-color:#FFF;
 }
 
-#content {
+article {
 	clear:both;
 	padding:1em;
 }
 
-#footer {
+footer {
 	border-top: 5px solid #002B6B;
 	color: #FFF;
 	background-color:#000;
 }
 
-#footer a{
+footer a{
 	color: #FFF;
 }
 .poweredBy{

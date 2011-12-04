@@ -8,26 +8,26 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header">
+		<header>
 			<a href="/"><%= image_tag "watertech.gif" %></a>
-		</div>
-		<div id="nav">
-		<ul>
-		<li><a href="dashboard">Dashboard</a></li>
-		<li><a href="manage">Manage</a></li>
-		<li><a href="about">About</a></li>
-		<li><a href="help">Help</a></li>
-		</ul>
-		</div>
-		<div id="content">
+		</header>
+		<nav>
+			<ul>
+			<li><a href="dashboard">Dashboard</a></li>
+			<li><a href="manage">Manage</a></li>
+			<li><a href="about">About</a></li>
+			<li><a href="help">Help</a></li>
+			</ul>
+		</nav>
+		<article>
 			<%= yield %>
-		</div>
-		<div id="footer">
+		</article>
+		<footer>
 			<div class="poweredBy">
 			Website Developed by
 			<a target="_blank" href="http://sector67.org">RHoK67 Team</a>
 			</div>
-		</div>
+		</footer>
 	</div>
 </body>
 </html>
