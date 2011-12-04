@@ -1,4 +1,20 @@
 <%= form_tag({:action => :upload}, :multipart => true) do %>
+  Facility
+  building
+  systype
+  system
+  <%= label_tag(:facility, "Facility Name") %>
+  <%= text_field_tag(:facility) %>
+  <br />
+  <%= label_tag(:building, "Building Name") %>
+  <%= text_field_tag(:building) %>
+  <br />
+  <%= label_tag(:system, "System Name") %>
+  <%= text_field_tag(:system) %>
+  <br />
+  <%= label_tag(:systype, "System Type") %>
+  <%= text_field_tag(:systype)%>
+  <br />
   <%= file_field_tag 'csv' %>
   <br />
   <%= submit_tag%>
