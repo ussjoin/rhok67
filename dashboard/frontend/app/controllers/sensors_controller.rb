@@ -25,9 +25,10 @@ class SensorsController < ApplicationController
   # convention method to return all inputs for an array of sensords
   # JSON request should contain an array of sensor ids
   def inputs
-    ids = Array.wrap(params[:ids])  
+    ids = Array.wrap(params[:ids])
+    ids.collect! {|i| i.to_i }
     @inputs = Array.wrap(Input.where("sensor_id in (:ids)", :ids => ids))
-    first_match = Sensor.find(ids.first);
+    first_match = Sensor.find(ids.first)
 
   	coords = Array.new
   	for input in @inputs

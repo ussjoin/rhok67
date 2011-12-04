@@ -23,7 +23,7 @@ class BuildingsController < ApplicationController
   
   # GET /buildings/1/systems.json
   def systems
-    @systems = Array.wrap(System.find_by_building_id(params[:id]))
+    @systems = Array.wrap(System.find_all_by_building_id(params[:id]))
 
     respond_to do |format|
       format.json { render :json => @systems }
