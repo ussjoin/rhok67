@@ -16,16 +16,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :sensor_box_id %><br />
-    <%= f.text_field :sensor_box_id %>
+    Sensor Box<br />
+		<%= f.collection_select :sensor_box_id, SensorBox.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :hardware_type_id %><br />
-    <%= f.text_field :hardware_type_id %>
+    Hardware Type<br />
+		<%= f.collection_select :hardware_type_id, HardwareType.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :unit_type_id %><br />
-    <%= f.text_field :unit_type_id %>
+    Unit Type<br />
+		<%= f.collection_select :unit_type_id, UnitType.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>
