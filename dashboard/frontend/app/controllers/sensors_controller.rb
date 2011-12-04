@@ -27,9 +27,13 @@ class SensorsController < ApplicationController
   def inputs
     ids = Array.wrap(params[:ids])
     @inputs = Array.wrap(Input.where("sensor_id in (:ids)", :ids => ids))
-
+	coords = Array.new
+	for input in @inputs
+		coord = [input.when.to_i, input.value]
+		coords.push(coord)
+	end
     respond_to do |format|
-      format.json { render :json => @inputs }
+      format.json { render :json => coords }
     end
   end
 
