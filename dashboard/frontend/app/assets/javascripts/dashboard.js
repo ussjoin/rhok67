@@ -153,20 +153,20 @@ $(function() {
 	   })
 	});
 	
-	var sensorSelectSuccessHandler = function(data){
+	var sensorSelectSuccessHandler = function(data, selectId){
 		var series = chart.addSeries({
-		    id: data.name,
+		    id: selectId,
 		    name: data.name,
 		    data: data.coords
 		});
 		var navSeries = chart.addSeries({
-		    id: data.name+"_nav",
+		    id: selectId+"_nav",
 		    name: data.name,
 		    data: data.coords,
 		   	xAxis:chart.xAxis.length-1,// the last X axis 
 	        yAxis:chart.yAxis.length-1 // the last Y axis
 		});
-		seriesMappings[data.name] = [data.name, data.name+"_nav"];
+		seriesMappings[selectId] = [selectId, selectId+"_nav"];
 	};
 	
 	$("#select_sensors").bind("multiselectclick", function(event, ui){
@@ -177,10 +177,12 @@ $(function() {
 			  dataType:"json",
 			  data:{"ids":[values]},
 			  context: document.body,
-			  success: sensorSelectSuccessHandler
+			  success: function(data) {
+				sensorSelectSuccessHandler(data, ui.value);
+			  }
 			});
 		} else {
-			$.each(seriesMappings[ui.text], function (index, value) {
+			$.each(seriesMappings[ui.value], function (index, value) {
 				chart.get(value).destroy();	
 			});
 		}
@@ -259,7 +261,7 @@ $(function() {
 		},
 		
 		series : [{
-		    name : 'Random data',
+		    name : 'Origin',
 		    data: [[(new Date()).getTime(), 0]]
 		}]
 		
