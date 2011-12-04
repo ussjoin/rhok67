@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Frontend</title>
+  <title>RHoK67</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="container">
+		<div id="header">
+			<%= image_tag "watertech.gif" %>
+		</div>
+		<div id="nav">
+		<ul>
+		<li><a href="blah">Home</a></li>
+		<li><a href="blah">About</a></li>
+		<li><a href="blah">Help</a></li>
+		</ul>
+		</div>
+		<div id="content">
+			<%= yield %>
+		</div>
+		<div id="footer">
+			<div class="poweredBy">
+			Website Developed by
+			<a target="_blank" href="http://sector67.org">RHoK67 Team</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
