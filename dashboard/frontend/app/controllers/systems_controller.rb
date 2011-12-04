@@ -20,6 +20,17 @@ class SystemsController < ApplicationController
       format.json { render :json => @system }
     end
   end
+  
+  # GET /systems/1/sensors.json
+  def sensors
+    sensor_box_ids = SensorBox.find_by_system_id(params[:id], :select => 'id') 
+    @sensors = System.find(sensor_box_ids)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @sensors }
+    end
+  end
 
   # GET /systems/new
   # GET /systems/new.json
