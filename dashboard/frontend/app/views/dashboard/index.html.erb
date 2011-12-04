@@ -2,78 +2,31 @@
 	<h2>Analyze water usage</h2>
 </div>
 	<div id="categories">
-		<form class="category" id="company">
-			<input type="checkbox" name="company" value="All" /> All Companies<br />
-			<input type="checkbox" name="company" value="A" /> Company A<br />
-			<input type="checkbox" name="company" value="B" /> Company B<br />
-			<input type="checkbox" name="company" value="C" /> Company C<br />
-		</form>
-		<form class="category" id="facility">
-			<input type="checkbox" name="facility" value="All" /> All Facilities<br />
-			<input type="checkbox" name="facility" value="A" /> Facility A<br />
-			<input type="checkbox" name="facility" value="B" /> Facility B<br />
-			<input type="checkbox" name="facility" value="C" /> Facility C<br />
-		</form>
-		<form class="category" id="company">
-			<input type="checkbox" name="building" value="All" /> All Buildings<br />
-			<input type="checkbox" name="building" value="A" /> Building A<br />
-			<input type="checkbox" name="building" value="B" /> Building B<br />
-			<input type="checkbox" name="building" value="C" /> Building C<br />
-		</form>
-		<form class="category" id="company">
-			<input type="checkbox" name="system" value="All" /> All Systems<br />
-			<input type="checkbox" name="system" value="A" /> System A<br />
-			<input type="checkbox" name="system" value="B" /> System B<br />
-			<input type="checkbox" name="system" value="C" /> System C<br />
-		</form>
-		<form class="category" id="company">
-			<input type="checkbox" name="component" value="All" /> All Components<br />
-			<input type="checkbox" name="component" value="A" /> Component A<br />
-			<input type="checkbox" name="component" value="B" /> Component B<br />
-			<input type="checkbox" name="component" value="C" /> Component C<br />
-		</form>
-	</div>
-	<div id="chart">
-		<script type="text/javascript">
-		$("#chart").chart({
-		template : "line_basic",
-		 type : "line",
-		 labels : ["a", "b", "c", "d"],
-		 tooltips : {
-		  serie1 : ["a", "b", "c", "d"],
-		  serie2 : ["a", "b", "c", "d"]
-		 },
-		 values : {
-		  serie1 : [78, 58, 5, 23],
-		  serie2 : [75, 59, 66, 98]
-		 },
-		 margins : [10, 10, 20, 50],
-		 series : {
-		  serie1 : {
-		   color : "red"
-		  },
-		  serie2 : {
-		   color : "blue"
-		  }
-		 },
-		 defaultAxis : {
-		  labels : true
-		 },
-		 features : {
-		  grid : {
-		   draw : true,
-		   forceBorder : true
-		  }
-		 }
-		});
-		</script>
-	</div>
-	<div id="timeline">
-		<div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider">
-		   <a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+		<div class="select_box" id="select_companies_div">
+			<select class="multiselect" size="4" id="select_companies" multiple="multiple">
+			<option>All Companies</option>
+			</select>
+		</div>
+		<div class="select_box"  id="select_facilities_div" multiple="multiple">
+			<select class="multiselect" size="4" id="select_facilities">
+			<option>All Facilities</option>
+			</select>
+		</div>
+		<div class="select_box"  id="select_buildings_div" multiple="multiple">
+			<select class="multiselect" size="4" id="select_buildings">
+			<option>All Buildings</option>
+			</select>
+		</div>
+		<div class="select_box"  id="select_systems_div" multiple="multiple">
+			<select class="multiselect" size="4" id="select_systems">
+			<option>All Systems</option>
+			</select>
+		</div>
+		<div class="select_box"  id="select_sensors_div" multiple="multiple">
+			<select class="multiselect" size="4" id="select_sensors">
+			<option>All Sensors</option>
+			</select>
 		</div>
 	</div>
-	<div id="select-dates">
-		<p>Start: <input class="datepicker" type="text"></p>
-		<p>End: <input class="datepicker" type="text"></p>
-	</div>
+	<div id="chart"></div>
+	<div style="clear:both"></div>

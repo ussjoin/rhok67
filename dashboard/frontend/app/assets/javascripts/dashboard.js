@@ -1,72 +1,97 @@
-
-
 $(function() {
-	$( ".datepicker" ).datepicker();
-	$( ".selector" ).slider({ range: 'min' });
-	$( "#slider" ).slider({
-		range: true,
-		min: 0,
-		max: 500,
-		values: [ 75, 300 ],
-		slide: function( event, ui ) {
-			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+	Highcharts.setOptions({
+		global : {
+			useUTC : false
 		}
 	});
-	$( "#amount" ).val( "$" + $( "#slider" ).slider( "values", 0 ) +
-		" - $" + $( "#slider" ).slider( "values", 1 ) );
-});
 	
-$(function() {
-	$( ".datepicker" ).datepicker();
+	$(".multiselect").multiselect().multiselect('disable');
+	
+	$.ajax({
+	  url: "companies",
+	  dataType:"json",
+	  context: document.body,
+	  success: function(data){
+		var output = [];
+		output.push('<option value="ALL">All Companies</option>');
+		for(company in data){
+			output.push('<option value="'+ data[company].id +'">'+ data[company].name +'</option>');
+		}
+		$('#select_companies').html(output.join('')).multiselect('refresh').multiselect('enable');
+		
+	  }
 	});
-$.elycharts.templates['line_basic'] = {
- type : "line",
- margins : [10, 10, 20, 50],
- defaultSeries : {
-  plotProps : {
-   "stroke-width" : 4
-  },
-  dot : true,
-  dotProps : {
-   stroke : "white",
-   "stroke-width" : 2
-  }
- },
- series : {
-  serie1 : {
-   color : "red"
-  },
-  serie2 : {
-   color : "blue"
-  }
- },
- defaultAxis : {
-  labels : true
- },
- features : {
-  grid : {
-   draw : [true, false],
-   props : {
-    "stroke-dasharray" : "-"
-   }
-  },
-  legend : {
-   horizontal : false,
-   width : 80,
-   height : 50,
-   x : 210,
-   y : 220,
-   dotType : "circle",
-   dotProps : {
-    stroke : "white",
-    "stroke-width" : 2
-   },
-   borderProps : {
-    opacity : 0.3,
-    fill : "#c0c0c0",
-    "stroke-width" : 0,
-    "stroke-opacity" : 0
-   }
-  }
- }
-}
+	
+	$("#select_companies").multiselect({
+	   optgrouptoggle: function(event, ui){
+		  var values = $.map(ui.inputs, function(checkbox){
+			 return checkbox.value;
+		  }).join(", ");
+		  alert("Checkboxes " + (ui.checked ? "checked" : "unchecked") + ": " + values);
+	   }
+	});
+	
+	
+	window.chart = new Highcharts.StockChart({
+		chart : {
+			renderTo : 'chart',
+			events : {
+				load : function() {
+
+					// set up the updating of the chart each second
+					var series = this.series[0];
+					setInterval(function() {
+						var x = (new Date()).getTime(), // current time
+						y = Math.round(Math.random() * 100);
+						series.addPoint([x, y], true, true);
+					}, 3000);
+				}
+			}
+		},
+		
+		rangeSelector: {
+			buttons: [{
+				count: 1,
+				type: 'day',
+				text: '1D'
+			}, {
+				count: 1,
+				type: 'week',
+				text: '1W'
+			}, {
+				count: 1,
+				type: 'month',
+				text: '1M'
+			}, {
+				count: 6,
+				type: 'month',
+				text: '6M'
+			}, {
+				type: 'all',
+				text: 'All'
+			}],
+			inputEnabled: false,
+			selected: 0
+		},
+		
+		exporting: {
+			enabled: true
+		},
+		
+		series : [{
+			name : 'Random data',
+			data : (function() {
+				// generate an array of random data
+				var data = [], time = (new Date()).getTime(), i;
+
+				for( i = -999; i <= 0; i++) {
+					data.push({
+						x : time + i * 1000,
+						y : Math.round(Math.random() * 100)
+					});
+				}
+				return data;
+			})()
+		}]
+	});	
+});
