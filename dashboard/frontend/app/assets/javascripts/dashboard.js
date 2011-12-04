@@ -34,12 +34,14 @@ $(function() {
 	};
 	
 	$("#select_companies").bind("multiselectclick", function(event, ui){
-		$.ajax({
-		  url: "companies/" + ui.value + "/facilities.json",
-		  dataType:"json",
-		  context: document.body,
-		  success: facilitiesSuccessHandler
-		});
+		if (ui.checked){
+			$.ajax({
+			  url: "companies/" + ui.value + "/facilities.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: facilitiesSuccessHandler
+			});
+		   }
 	   }
 	);
 	
@@ -52,12 +54,14 @@ $(function() {
 	};
 	
 	$("#select_facilities").bind("multiselectclick", function(event, ui){
-		$.ajax({
-		  url: "facilities/" + ui.value + "/buildings.json",
-		  dataType:"json",
-		  context: document.body,
-		  success: buildingSuccessHandler
-		});
+		if (ui.checked){
+			$.ajax({
+			  url: "facilities/" + ui.value + "/buildings.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: buildingSuccessHandler
+			});
+		   }
 	   }
 	);
 	
@@ -70,12 +74,14 @@ $(function() {
 	};
 	
 	$("#select_buildings").bind("multiselectclick", function(event, ui){
-		$.ajax({
-		  url: "buildings/" + ui.value + "/systems.json",
-		  dataType:"json",
-		  context: document.body,
-		  success: systemSuccessHandler
-		});
+		if (ui.checked){
+			$.ajax({
+			  url: "buildings/" + ui.value + "/systems.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: systemSuccessHandler
+			});
+		   }
 	   }
 	);
 	
@@ -88,16 +94,40 @@ $(function() {
 	};
 	
 	$("#select_systems").bind("multiselectclick", function(event, ui){
-		$.ajax({
-		  url: "systems/" + ui.value + "/sensors.json",
-		  dataType:"json",
-		  context: document.body,
-		  success: sensorSuccessHandler
-		});
+		if (ui.checked){
+			$.ajax({
+			  url: "systems/" + ui.value + "/sensors.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: sensorSuccessHandler
+			});
+		   }
 	   }
 	);
 	
+	var sensorSelectSuccessHandler = function(data){
+		var output = [];
+		for(sensor in data){
+			var sensorOption = new Option(data[sensor].name, data[sensor].id);
+			$('#select_sensors').append(sensorOption).multiselect('refresh').multiselect('enable');
+		}
+	};
 	
+	$("#select_sensors").bind("multiselectclick", function(event, ui){
+		if (ui.checked){
+			var values = $.map(ui.inputs, function(checkbox){
+			 return checkbox.value;
+		  });
+			$.ajax({
+			  url: "sensors/inputs.json",
+			  dataType:"json",
+			  data:{"ids":values},
+			  context: document.body,
+			  success: sensorSelectSuccessHandler
+			});
+		   }
+	   }
+	);
 	
 	window.chart = new Highcharts.StockChart({
 		chart : {
