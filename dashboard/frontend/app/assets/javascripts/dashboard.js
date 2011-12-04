@@ -45,6 +45,17 @@ $(function() {
 	   }
 	);
 	
+	$("#select_companies").bind("multiselectcheckall", function(event, ui){
+		$("#select_companies").multiselect("getChecked").each(function(){
+			$.ajax({
+			  url: "companies/" + $(this).val() + "/facilities.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: facilitiesSuccessHandler
+			})
+	   })
+	});
+	
 	var buildingSuccessHandler = function(data){
 		var output = [];
 		for(building in data){
@@ -64,6 +75,17 @@ $(function() {
 		   }
 	   }
 	);
+	
+	$("#select_facilities").bind("multiselectcheckall", function(event, ui){
+		$("#select_facilities").multiselect("getChecked").each(function(){
+			$.ajax({
+			  url: "facilities/" + $(this).val() + "/buildings.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: buildingSuccessHandler
+			})
+	   })
+	});
 	
 	var systemSuccessHandler = function(data){
 		var output = [];
@@ -85,6 +107,17 @@ $(function() {
 	   }
 	);
 	
+	$("#select_buildings").bind("multiselectcheckall", function(event, ui){
+		$("#select_buildings").multiselect("getChecked").each(function(){
+			$.ajax({
+			  url: "buildings/" + $(this).val() + "/systems.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: systemSuccessHandler
+			})
+	   })
+	});
+	
 	var sensorSuccessHandler = function(data){
 		var output = [];
 		for(sensor in data){
@@ -104,6 +137,17 @@ $(function() {
 		   }
 	   }
 	);
+	
+	$("#select_systems").bind("multiselectcheckall", function(event, ui){
+		$("#select_systems").multiselect("getChecked").each(function(){
+			$.ajax({
+			  url: "systems/" + $(this).val() + "/sensors.json",
+			  dataType:"json",
+			  context: document.body,
+			  success: sensorSuccessHandler
+			})
+	   })
+	});
 	
 	var sensorSelectSuccessHandler = function(data){
 		chart.addSeries({
@@ -132,6 +176,20 @@ $(function() {
 	   }
 	);
 	
+	
+	$("#select_sensors").bind("multiselectcheckall", function(event, ui){
+		$("#select_sensors").multiselect("getChecked").each(function(){
+			  var values = $(this).val();
+			$.ajax({
+			  url: "sensors/inputs.json",
+			  dataType:"json",
+			  data:{"ids":[values]},
+			  context: document.body,
+			  success: sensorSelectSuccessHandler
+			});
+	   })
+	});
+	
 	chart = new Highcharts.StockChart({
 		chart : {
 			renderTo : 'chart'
@@ -150,6 +208,17 @@ $(function() {
 	         },
 	         min: 0
 	      },
+		  tooltip: {
+            formatter: function() {
+                var s = '<b>'+ Highcharts.dateFormat('%A, %b %e, %Y %h:%m %t', this.x) +'</b>';
+
+                $.each(this.points, function(i, point) {
+                    s += '<br/><b>'+ this.series.name + "</b>: "+ point.y.toFixed(2) ;
+                });
+            
+                return s;
+            }
+        },
 		rangeSelector: {
 			buttons: [{
 				count: 1,
