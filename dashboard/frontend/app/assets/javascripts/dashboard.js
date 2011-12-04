@@ -106,9 +106,15 @@ $(function() {
 	);
 	
 	var sensorSelectSuccessHandler = function(data){
-		var series = chart.addSeries({
+		chart.addSeries({
 		    name: "Value",
 		    data: data
+		});
+		chart.addSeries({
+		    name: "Value",
+		    data: data,
+		   	xAxis:chart.xAxis.length-1,// the last X axis 
+	        yAxis:chart.yAxis.length-1 // the last Y axis
 		});
 	};
 	
