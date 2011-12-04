@@ -23,8 +23,7 @@ class SystemsController < ApplicationController
   
   # GET /systems/1/sensors.json
   def sensors
-    sensor_box_ids = SensorBox.find_by_system_id(params[:id], :select => 'id') 
-    @sensors = System.find(sensor_box_ids)
+    @sensors = Array.wrap(Sensor.joins(:sensor_box).where('sensor_boxes.system_id' => params[:id]))
 
     respond_to do |format|
       format.html # show.html.erb

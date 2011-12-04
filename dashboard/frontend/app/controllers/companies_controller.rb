@@ -39,10 +39,10 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/facilities.json
   def facilities
-    @facilities = Facility.find_by_company_id(params[:id])
+    @facilities = Array.wrap(Facility.find_by_company_id(params[:id]))
 
     respond_to do |format|
-      format.json { render :json => @facilities, :status => :unprocessable_entity }
+      format.json { render :json => @facilities}
     end
   end
 

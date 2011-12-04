@@ -25,7 +25,7 @@ class SensorsController < ApplicationController
   # convention method to return all inputs for an array of sensords
   # JSON request should contain an array of sensor ids
   def inputs
-    @inputs = Input.find_by_sensor_id(params[:ids])
+    @inputs = Array.wrap(Input.find_by_sensor_id(params[:ids]))
 
     respond_to do |format|
       format.json { render :json => @inputs }

@@ -23,7 +23,7 @@ class FacilitiesController < ApplicationController
   
   # GET /facilities/1/buildings.json
   def buildings
-    @buildings = Building.find_by_facility_id(params[:id])
+    @buildings = Array.wrap(Building.find_by_facility_id(params[:id]))
 
     respond_to do |format|
       format.json { render :json => @buildings }

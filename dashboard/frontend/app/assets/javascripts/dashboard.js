@@ -1,4 +1,5 @@
 $(function() {
+	
 	Highcharts.setOptions({
 		global : {
 			useUTC : false
@@ -7,29 +8,95 @@ $(function() {
 	
 	$(".multiselect").multiselect().multiselect('disable');
 	
-	$.ajax({
-	  url: "companies",
-	  dataType:"json",
-	  context: document.body,
-	  success: function(data){
+	
+	var companySuccessHandler = function(data){
 		var output = [];
-		output.push('<option value="ALL">All Companies</option>');
 		for(company in data){
 			output.push('<option value="'+ data[company].id +'">'+ data[company].name +'</option>');
 		}
 		$('#select_companies').html(output.join('')).multiselect('refresh').multiselect('enable');
 		
-	  }
+	  };
+	
+	$.ajax({
+	  url: "companies",
+	  dataType:"json",
+	  context: document.body,
+	  success: companySuccessHandler
 	});
 	
-	$("#select_companies").multiselect({
-	   optgrouptoggle: function(event, ui){
-		  var values = $.map(ui.inputs, function(checkbox){
-			 return checkbox.value;
-		  }).join(", ");
-		  alert("Checkboxes " + (ui.checked ? "checked" : "unchecked") + ": " + values);
+	var facilitiesSuccessHandler = function(data){
+		var output = [];
+		for(facility in data){
+			var facilityOption = new Option(data[facility].name, data[facility].id);
+			$('#select_facilities').append(facilityOption).multiselect('refresh').multiselect('enable');
+		}
+	};
+	
+	$("#select_companies").bind("multiselectclick", function(event, ui){
+		$.ajax({
+		  url: "companies/" + ui.value + "/facilities.json",
+		  dataType:"json",
+		  context: document.body,
+		  success: facilitiesSuccessHandler
+		});
 	   }
-	});
+	);
+	
+	var buildingSuccessHandler = function(data){
+		var output = [];
+		for(building in data){
+			var buildingOption = new Option(data[building].name, data[building].id);
+			$('#select_buildings').append(buildingOption).multiselect('refresh').multiselect('enable');
+		}
+	};
+	
+	$("#select_facilities").bind("multiselectclick", function(event, ui){
+		$.ajax({
+		  url: "facilities/" + ui.value + "/buildings.json",
+		  dataType:"json",
+		  context: document.body,
+		  success: buildingSuccessHandler
+		});
+	   }
+	);
+	
+	var systemSuccessHandler = function(data){
+		var output = [];
+		for(system in data){
+			var systemOption = new Option(data[system].name, data[system].id);
+			$('#select_systems').append(systemOption).multiselect('refresh').multiselect('enable');
+		}
+	};
+	
+	$("#select_buildings").bind("multiselectclick", function(event, ui){
+		$.ajax({
+		  url: "buildings/" + ui.value + "/systems.json",
+		  dataType:"json",
+		  context: document.body,
+		  success: systemSuccessHandler
+		});
+	   }
+	);
+	
+	var sensorSuccessHandler = function(data){
+		var output = [];
+		for(sensor in data){
+			var sensorOption = new Option(data[sensor].name, data[sensor].id);
+			$('#select_sensors').append(sensorOption).multiselect('refresh').multiselect('enable');
+		}
+	};
+	
+	$("#select_systems").bind("multiselectclick", function(event, ui){
+		$.ajax({
+		  url: "systems/" + ui.value + "/sensors.json",
+		  dataType:"json",
+		  context: document.body,
+		  success: sensorSuccessHandler
+		});
+	   }
+	);
+	
 	
 	
 	window.chart = new Highcharts.StockChart({
