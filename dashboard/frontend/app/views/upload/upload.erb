@@ -1,0 +1,24 @@
+<%= form_tag({:action => :upload}, :multipart => true) do %>
+  <%= file_field_tag 'csv' %>
+  <br />
+  <%= submit_tag%>
+<% end %>
+
+<%unless @headers.nil? or @main.nil?%>
+  <table>
+    <tr>
+      <%@headers.each do |h|%>
+        <td><%=h%></td>
+      <%end%>
+    </tr>
+    <%@main.each do |r|%>
+      <tr>
+        <%r.each do |c|%>
+          <td>
+            <%=c%>
+          </td>
+        <%end%>
+      </tr>
+    <%end%>
+  </table>
+<%end%>
