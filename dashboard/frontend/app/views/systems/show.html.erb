@@ -7,12 +7,12 @@
 
 <p>
   <b>Building:</b>
-  <%= @system.building %>
+  <%= link_to @system.building.name, @system.building %>
 </p>
 
 <p>
   <b>System type:</b>
-  <%= @system.system_type %>
+  <%= link_to @system.system_type.name, @system.system_type %>
 </p>
 
 

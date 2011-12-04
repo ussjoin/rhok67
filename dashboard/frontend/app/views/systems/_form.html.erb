@@ -16,12 +16,11 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :building_id %><br />
-    <%= f.text_field :building_id %>
+    Building<br />
+		<%= f.collection_select :building_id, Building.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :system_type_id %><br />
-    <%= f.text_field :system_type_id %>
+		<%= f.collection_select :system_type_id, SystemType.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>
