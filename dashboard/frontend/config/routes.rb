@@ -26,6 +26,12 @@ Frontend::Application.routes.draw do
 
   resources :facilities
   
+  match 'companies/:id/facilities' => 'companies#facilities'
+  match 'facilities/:id/buildings' => 'facilities#buildings'
+  match 'buildings/:id/systems' => 'buildings#systems'
+  match 'systems/:id/sensors' => 'systems#sensors'
+  
+  
   match 'upload' => 'upload#upload', :as => :upload
 
   # The priority is based upon order of creation:

@@ -20,6 +20,15 @@ class BuildingsController < ApplicationController
       format.json { render :json => @building }
     end
   end
+  
+  # GET /buildings/1/systems.json
+  def systems
+    @systems = System.find_by_building_id(params[:id])
+
+    respond_to do |format|
+      format.json { render :json => @systems }
+    end
+  end
 
   # GET /buildings/new
   # GET /buildings/new.json
