@@ -1,38 +1,25 @@
 Frontend::Application.routes.draw do
-  
-  resources :dashboard
-  
-  resources :about
-  
-  resources :help
-  
-  resources :sensor_boxes
 
-  resources :companies
-  
-  resources :unit_types
-
-  resources :systems
-
-  resources :system_types
-
-  resources :sensors
-
-  resources :hardware_types
-
-  resources :inputs
-
-  resources :buildings
-
-  resources :facilities
-  
+  match 'sensors/inputs' => 'sensors#inputs'
   match 'companies/:id/facilities' => 'companies#facilities'
   match 'facilities/:id/buildings' => 'facilities#buildings'
   match 'buildings/:id/systems' => 'buildings#systems'
   match 'systems/:id/sensors' => 'systems#sensors'
-  
-  
   match 'upload' => 'upload#upload', :as => :upload
+  
+  resources :dashboard
+  resources :about
+  resources :help
+  resources :sensor_boxes
+  resources :companies
+  resources :unit_type
+  resources :system
+  resources :system_types
+  resources :sensors
+  resources :hardware_types
+  resources :inputs
+  resources :buildings
+  resources :facilities
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

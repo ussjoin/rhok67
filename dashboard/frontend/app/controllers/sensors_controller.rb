@@ -20,6 +20,17 @@ class SensorsController < ApplicationController
       format.json { render :json => @sensor }
     end
   end
+  
+  # GET /sensors/datas
+  # convention method to return all inputs for an array of sensords
+  # JSON request should contain an array of sensor ids
+  def inputs
+    @inputs = Input.find_by_sensor_id(params[:ids])
+
+    respond_to do |format|
+      format.json { render :json => @inputs }
+    end
+  end
 
   # GET /sensors/new
   # GET /sensors/new.json
