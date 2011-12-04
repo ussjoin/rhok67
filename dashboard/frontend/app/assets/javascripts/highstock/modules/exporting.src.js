@@ -308,6 +308,7 @@ extend(Chart.prototype, {
 
 	exportCSV:function() {
 		chart = this;
+		window.location = "dashboard/export";
 	},
 	/**
 	 * Submit the SVG representation of the chart to the server
