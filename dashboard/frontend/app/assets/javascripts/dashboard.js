@@ -1,4 +1,8 @@
+var seriesMappings = {};
+
 $(function() {
+	
+
 	
 	Highcharts.setOptions({
 		global : {
@@ -150,16 +154,19 @@ $(function() {
 	});
 	
 	var sensorSelectSuccessHandler = function(data){
-		chart.addSeries({
+		var series = chart.addSeries({
+		    id: data.name,
 		    name: data.name,
 		    data: data.coords
 		});
-		chart.addSeries({
+		var navSeries = chart.addSeries({
+		    id: data.name+"_nav",
 		    name: data.name,
 		    data: data.coords,
 		   	xAxis:chart.xAxis.length-1,// the last X axis 
 	        yAxis:chart.yAxis.length-1 // the last Y axis
 		});
+		seriesMappings[data.name] = [data.name, data.name+"_nav"];
 	};
 	
 	$("#select_sensors").bind("multiselectclick", function(event, ui){
@@ -172,9 +179,12 @@ $(function() {
 			  context: document.body,
 			  success: sensorSelectSuccessHandler
 			});
-		   }
-	   }
-	);
+		} else {
+			$.each(seriesMappings[ui.text], function (index, value) {
+				chart.get(value).destroy();	
+			});
+		}
+	});
 	
 	
 	$("#select_sensors").bind("multiselectcheckall", function(event, ui){
